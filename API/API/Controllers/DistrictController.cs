@@ -43,5 +43,27 @@ namespace API.Controllers
             }
         }
 
+        [HttpPost("AddSalesman")]
+        public async Task<IActionResult> AddSalesManToDistrict([FromBody] int district_id, [FromBody] bool is_main, [FromBody] int salesmanId)
+        {
+            try
+            {
+                Console.WriteLine(district_id +" " + is_main + "" + salesmanId);
+                int result = await _districtRepository.AddSalesManToDistrict(salesmanId, district_id, is_main);  
+                if (result > 0)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Could not add salesman");
+                }
+            } catch(Exception ex)
+            {
+                return BadRequest("Could not add salesman. It seems that the salesman does not exists in the database");
+            }
+
+        }
+
     }
 }

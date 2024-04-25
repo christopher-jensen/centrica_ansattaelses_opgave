@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Ìnfrastructure.Interfaces
 {
@@ -12,6 +13,6 @@ namespace Ìnfrastructure.Interfaces
         Task<IEnumerable<District>> GetAllDistrics();
         Task<Salesman> GetMainSalesman(int salesmanid);
         Task<IEnumerable<Store>> GetStoresByDistrictId(int districtId);
-        Task AddSalesManToDistrict (Salesman salesMan, int districtId, bool isMain);
+        Task<int> AddSalesManToDistrict (int salesManId, int districtId, bool isMain);
     }
 }

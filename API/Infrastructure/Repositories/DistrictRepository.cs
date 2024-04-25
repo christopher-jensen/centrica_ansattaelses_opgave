@@ -40,12 +40,31 @@ namespace Infrastructure.Repositories
 
         public async Task<IEnumerable<Store>> GetStoresByDistrictId(int districtId)
         {
-            string sql = "SELECT *" +
-             "FROM Store s" +
+            string sql = "SELECT * " +
+             "FROM Store s " +
              "WHERE s.district_id=" + districtId;
 
             IEnumerable<Store> stores = await _conn.QueryAsync<Store>(sql);
             return stores;
+        }
+        public async Task<int> AddSalesManToDistrict(int salesmanId, int districtId, bool isMain)
+        {
+            // Tag blot salesmanId med?
+            string sql;
+            if (isMain)
+            {
+                sql = "UPDATE district " +
+                      "SET main_sm = " + salesmanId +
+                      " WHERE id = district_id";
+            }
+            else
+            {
+                sql = "UPDATE salesman " +
+                      "SET district_id = " + districtId +
+                      " WHERE id = " + salesmanId;
+            }
+            int rowsAffected = await _conn.ExecuteAsync(sql);
+            return rowsAffected;
         }
 
     }
