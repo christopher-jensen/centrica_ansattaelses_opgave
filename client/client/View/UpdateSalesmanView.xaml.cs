@@ -11,20 +11,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace client.View
 {
     /// <summary>
-    /// Interaction logic for DistrictView.xaml
+    /// Interaction logic for UpdateSalesmanView.xaml
     /// </summary>
-    public partial class DistrictView : UserControl
+    public partial class UpdateSalesmanView : Window
     {
-        public DistrictView(string name)
-        { 
+        public UpdateSalesmanView(int salesmanId)
+        {
             InitializeComponent();
-            this.DataContext = new DistrictViewModel(name);
+            var viewModel = new UpdateSalesmanViewModel(salesmanId);
+            if (viewModel.CloseAction == null) {
+                viewModel.CloseAction = new Action(this.Close);
+            }
+            this.DataContext = viewModel;
+
         }
     }
 }

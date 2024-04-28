@@ -8,12 +8,13 @@ namespace Domain.Models
 {
     public class Salesman
     {
-        public Salesman(int id, string firstName, string middleName, string lastName)
+        // Naming forced by Dapper to map sql object
+        public Salesman(int id, string first_name, string middle_Name, string last_name)
         {
             Id = id;
-            FirstName = firstName;
-            MiddleName = middleName;
-            LastName = lastName;
+            FirstName = first_name;
+            MiddleName = middle_Name;
+            LastName = last_name;
         }
         public int Id { get;}
 

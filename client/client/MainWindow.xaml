@@ -6,9 +6,14 @@
         xmlns:local="clr-namespace:client"
         xmlns:view="clr-namespace:client.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Loaded ="MainWindow_Loaded">
     <Grid>
-        <view:AllDistrictsView x:Name = "AllDistrictsViewControl" Loaded = "AllDistrictsViewControl_Loaded"/>
+        <StackPanel>
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Content="Back" Margin="20 20" Click="ExitButton"/>
+            <!--<view:AllDistrictsView x:Name = "AllDistrictsViewControl" Loaded = "AllDistrictsViewControl_Loaded"/>-->
+            <ContentControl x:Name="MainContentControl"/>
+        </StackPanel>
         
     </Grid>
 </Window>

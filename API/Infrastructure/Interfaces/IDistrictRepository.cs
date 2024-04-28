@@ -11,8 +11,9 @@ namespace Ìnfrastructure.Interfaces
     public interface IDistrictRepository
     {
         Task<IEnumerable<District>> GetAllDistrics();
-        Task<Salesman> GetMainSalesman(int salesmanid);
-        Task<IEnumerable<Store>> GetStoresByDistrictId(int districtId);
-        Task<int> AddSalesManToDistrict (int salesManId, int districtId, bool isMain);
+        Task<Salesman> GetMainSalesman(string districtName);
+        Task<IEnumerable<Salesman>> GetSalesmen(string districtName);
+        Task<IEnumerable<Store>> GetStoresByDistrictName(string districtName);
+        Task<int> AddSalesManToDistrict (int salesManId, string districtName, bool isMain);
     }
 }

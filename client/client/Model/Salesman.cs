@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace client.Model
 {
-    public class Salesman 
+    public class Salesman : INotifyPropertyChanged
     {
         private int _id;
         private int _districtId;

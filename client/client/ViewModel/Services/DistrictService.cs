@@ -10,6 +10,7 @@ using System.Net.Http.Headers;
 using System.Net;
 
 using System.Net.Http.Json;
+using System.Windows;
 
 namespace ViewModel.Services
 {
@@ -20,7 +21,7 @@ namespace ViewModel.Services
         public DistrictService()
         {
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://localhost:7269/");
+            _client.BaseAddress = new Uri("https://localhost:7269/District/");
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
@@ -29,8 +30,7 @@ namespace ViewModel.Services
         public async Task<IEnumerable<District>> GetDistricts()
         {
             IEnumerable<District> districst;
-            Console.WriteLine(_client.BaseAddress + "District/GetDistricts");
-            HttpResponseMessage res = await _client.GetAsync("District/GetDistricts");
+            HttpResponseMessage res = await _client.GetAsync("GetDistricts");
             if (res.IsSuccessStatusCode)
             {
                 districst = await res.Content.ReadFromJsonAsync<IEnumerable<District>>();
@@ -38,20 +38,72 @@ namespace ViewModel.Services
             }
             else
             {
-                throw new Exception("Could not retrieve districts");
+                throw new Exception(res.StatusCode.ToString());
+                //throw new Exception("Could not retrieve districts");
             }
         }
 
-        public async Task<IEnumerable<Salesman>> GetSalesmen(int districtId)
+        public async Task<Salesman> GetMainSalesMan(string districtName)
         {
-            var temp = new List<Salesman>();
-            temp.Add(new Salesman(1, 1, "test", null, "test"));
-            return temp;
+            Salesman salesman;
+            HttpResponseMessage res = await _client.GetAsync("Salesman/GetMainSalesman/" + districtName);
+            if (res.IsSuccessStatusCode)
+            {
+                salesman = await res.Content.ReadFromJsonAsync<Salesman>();
+                return salesman;
+            }
+            else
+            {
+                string error = await res.Content.ReadAsStringAsync();
+                throw new Exception(error);
+            }
         }
 
-        public async Task<IEnumerable<Store>> GetStores(int districtId)
+        public async Task<IEnumerable<Salesman>> GetSalesmen(string districtName)
         {
-            return new List<Store>();
+            IEnumerable<Salesman> salesmen;
+            HttpResponseMessage res = await _client.GetAsync("Salesman/GetSalesmen/" + districtName);
+            if (res.IsSuccessStatusCode) 
+            {
+                salesmen = await res.Content.ReadFromJsonAsync<IEnumerable<Salesman>>();
+                return salesmen;
+            } 
+            else 
+            {
+                string error = await res.Content.ReadAsStringAsync();
+                throw new Exception(error);
+            }
         }
+
+
+        public async Task<IEnumerable<Store>> GetStores(string districtName)
+        {
+            IEnumerable<Store> stores;
+            HttpResponseMessage res = await _client.GetAsync("GetStores/" + districtName);
+            if (res.IsSuccessStatusCode)
+            {
+                stores = await res.Content.ReadFromJsonAsync<IEnumerable<Store>>();
+                return stores;
+            }
+            else
+            {
+                string error = await res.Content.ReadAsStringAsync();
+                throw new Exception(error);
+            }
+        }
+
+        public async Task UpdateSalesman(int salesmanId, bool isMain, string districtName)
+        {
+            HttpResponseMessage res = await _client.PutAsync("Salesman/" + salesmanId + "/district/" + districtName + "/isMain-" + isMain, null);
+            if (res.IsSuccessStatusCode) {
+                return;
+            }
+            else
+            {
+                string error = await res.Content.ReadAsStringAsync();
+                throw new Exception(error);
+            }
+        }
+
     }
 }

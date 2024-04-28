@@ -10,7 +10,9 @@ namespace ViewModel.Interfaces
     public interface IDistrictService
     {
         Task<IEnumerable<District>> GetDistricts();
-        Task<IEnumerable<Store>> GetStores(int districtId);
-        Task<IEnumerable<Salesman>> GetSalesmen(int districtId);
+        Task<IEnumerable<Store>> GetStores(string districtName);
+        Task<IEnumerable<Salesman>> GetSalesmen(string districtName);
+        Task<Salesman> GetMainSalesMan(string districtName);
+        Task UpdateSalesman(int salesmanId, bool isMain, string districtName);
     }
 }

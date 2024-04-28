@@ -1,0 +1,20 @@
+﻿<Window x:Class="client.View.UpdateSalesmanView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:client.View"
+        mc:Ignorable="d"
+        Title="UpdateSalesmanView" Height="100" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Move to district:"/>
+            <TextBox Text="{Binding Path=District,Mode=OneWayToSource}"/>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding Path=IsMain, Mode=OneWayToSource}"/>
+                <TextBlock Text="Is main salesman:"/>
+            </StackPanel>
+            <Button Content="Save" Command="{Binding UpdateSalesmanCommand}"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

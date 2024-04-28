@@ -38,7 +38,7 @@ namespace client.ViewModel
             }
         }
 
-        public async void LoadDistricts()
+        private async void LoadDistricts()
         {
             try
             {
@@ -47,29 +47,9 @@ namespace client.ViewModel
                 Districts = districtsCollection;
             } catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
-
-        public void LoadDistrictsHardCoded()
-        {
-            ObservableCollection<District> districtsCollection = new ObservableCollection<District>();
-            //districtsCollection.Add(new District(1, "test", 2));
-            //districtsCollection.Add(new District(2, "testtesttesttesttesttest", 2));
-            //districtsCollection.Add(new District(3, "test", 2));
-
-            Districts = districtsCollection;
-
-            foreach(var item in Districts)
-            {
-                Console.WriteLine("name " + item.Name + " mainsmid " + item.MainSalesmanId);
-            }
-            if (true)
-            {
-                Console.WriteLine("test");
-            }
-        }
-
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

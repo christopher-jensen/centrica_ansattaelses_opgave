@@ -29,8 +29,8 @@ namespace client.View
 
         public void GetDistrict(Object sender, RoutedEventArgs e)
         {
-            var districtName = ((Button)sender).Tag;
-            MessageBox.Show(districtName.ToString());
+            string name = ((Button)sender).Tag.ToString();
+            Switcher.Navigate(new DistrictView(name));
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace client.Model
 {
-    public class Store
+    public class Store : INotifyPropertyChanged
     {
         private int _id;
         private int _districtId;
