@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model.Interfaces
+namespace client
 {
-    public interface IStore
+    public  class Switcher
     {
     }
 }

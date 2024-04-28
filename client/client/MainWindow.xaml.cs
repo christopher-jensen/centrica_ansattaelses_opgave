@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using client.ViewModel;
+using ViewModel.Interfaces;
 
 namespace client
 {
@@ -20,9 +22,31 @@ namespace client
     /// </summary>
     public partial class MainWindow : Window
     {
+        //private readonly IDistrictService _districtService;
+        //private readonly DistrictViewModel _districtViewModel;  
+
         public MainWindow()
         {
             InitializeComponent();
+
         }
+
+        private void AllDistrictsViewControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            AllDistrictsViewModel districtViewModelObject =
+                new AllDistrictsViewModel();
+            //int res = await districtViewModelObject.LoadDistrictsHardCoded();
+            districtViewModelObject.LoadDistricts();
+            AllDistrictsViewControl.DataContext = districtViewModelObject;
+            //if (res == 0)
+            //{
+            //    Console.WriteLine("shit");
+            //}
+            //else
+            //{
+            //    DistrictViewControl.DataContext = districtViewModelObject;
+            //}
+        }
+
     }
 }

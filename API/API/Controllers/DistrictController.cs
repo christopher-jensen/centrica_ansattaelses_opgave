@@ -43,13 +43,13 @@ namespace API.Controllers
             }
         }
 
-        [HttpPost("AddSalesman")]
-        public async Task<IActionResult> AddSalesManToDistrict([FromBody] int district_id, [FromBody] bool is_main, [FromBody] int salesmanId)
+        [HttpPut("Salesman/{salesmanId}/district/{districtId}/isMain-{isMain}")]
+        public async Task<IActionResult> AddSalesManToDistrict([FromRoute] int salesmanId, [FromRoute] int districtId, [FromRoute] bool isMain)
         {
             try
             {
-                Console.WriteLine(district_id +" " + is_main + "" + salesmanId);
-                int result = await _districtRepository.AddSalesManToDistrict(salesmanId, district_id, is_main);  
+                Console.WriteLine(districtId +" " + isMain + "" + salesmanId);
+                int result = await _districtRepository.AddSalesManToDistrict(salesmanId, districtId, isMain);  
                 if (result > 0)
                 {
                     return Ok();
