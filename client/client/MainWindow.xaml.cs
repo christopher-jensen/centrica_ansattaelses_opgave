@@ -30,23 +30,6 @@ namespace client
         {
             InitializeComponent();
         }
-
-        private void AllDistrictsViewControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            //AllDistrictsViewModel districtViewModelObject =
-            //    new AllDistrictsViewModel();
-            ////int res = await districtViewModelObject.LoadDistrictsHardCoded();
-            //districtViewModelObject.LoadDistricts();
-            //AllDistrictsViewControl.DataContext = districtViewModelObject;
-            //if (res == 0)
-            //{
-            //    Console.WriteLine("shit");
-            //}
-            //else
-            //{
-            //    DistrictViewControl.DataContext = districtViewModelObject;
-            //}
-        }
         private void ExitButton(object sender, RoutedEventArgs e)
         {
             var allDistrictView = new AllDistrictsView();

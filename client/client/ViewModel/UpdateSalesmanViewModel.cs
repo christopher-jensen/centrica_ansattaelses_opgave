@@ -19,12 +19,17 @@ namespace client.ViewModel
         private string _district;
         private bool _isMain;
         IDistrictService _districtService;
+
         public UpdateSalesmanViewModel(int salesmanId)
         {
             UpdateSalesmanCommand = new RelayCommand(UpdateSalesman);
             _districtService = new DistrictService();
             _salesmanId = salesmanId;
         }
+
+        /// <summary>
+        /// Used to close the window
+        /// </summary>
         public Action CloseAction { get; set; }
         public ICommand UpdateSalesmanCommand { get; private set; }
         public string District

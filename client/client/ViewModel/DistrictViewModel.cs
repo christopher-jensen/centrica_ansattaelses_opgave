@@ -25,6 +25,10 @@ namespace client.ViewModel
         private Salesman _mainSm;
         private Salesman _selectedSalesman;
 
+        /// <summary>
+        /// Loads salesmen, stores and main salesman for the given district.
+        /// </summary>
+        /// <param name="name">Name of the district</param>
         public DistrictViewModel(string name)
         {
             _districtService = new DistrictService();

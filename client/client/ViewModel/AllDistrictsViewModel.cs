@@ -18,6 +18,7 @@ namespace client.ViewModel
 
         private readonly IDistrictService _districtService;
 
+        // Meant for dependency Injection
         //public DistrictViewModel(IDistrictService districtService)
         //{
         //    _districtService = districtService;
@@ -29,6 +30,10 @@ namespace client.ViewModel
             LoadDistricts();
         }
 
+        /// <summary>
+        /// Used for testing or dependency injection
+        /// </summary>
+        /// <param name="districtService">Do not pass a DistrictService. Meant for dependency injection</param>
         // Used for testing as i did not manage to implement dependency injection
         public AllDistrictsViewModel(IDistrictService districtService)
         {
@@ -44,6 +49,9 @@ namespace client.ViewModel
             }
         }
 
+        /// <summary>
+        /// Load districts in the database
+        /// </summary>
         public async void LoadDistricts()
         {
             try
