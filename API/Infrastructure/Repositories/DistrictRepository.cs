@@ -27,7 +27,11 @@ namespace Infrastructure.Repositories
             IEnumerable<District> districts = await _conn.QueryAsync<District>("SELECT * FROM district");
             return districts;
         }
-
+        /// <summary>
+        /// Gets the main salesman of the district you provide
+        /// </summary>
+        /// <param name="districtName">Name of the district</param>
+        /// <returns></returns>
         public async Task<Salesman> GetMainSalesman(string districtName)
         {
             string sql = "SELECT s.id, s.first_name, s.middle_name, s.last_name " +
@@ -49,6 +53,14 @@ namespace Infrastructure.Repositories
             IEnumerable<Store> stores = await _conn.QueryAsync<Store>(sql);
             return stores;
         }
+
+        /// <summary>
+        /// Add a salesman to a given district. Can also change main salesman if isMain is set to true
+        /// </summary>
+        /// <param name="salesmanId">The id of the salesman who should be moved</param>
+        /// <param name="districtName">The district to move him to (case insensitive)</param>
+        /// <param name="isMain">True: set salesman to main salesman of district. False: move to another district</param>
+        /// <returns></returns>
         public async Task<int> AddSalesManToDistrict(int salesmanId, string districtName, bool isMain)
         {
             // Tag blot salesmanId med?
@@ -74,7 +86,11 @@ namespace Infrastructure.Repositories
             int rowsAffected = await _conn.ExecuteAsync(sql);
             return rowsAffected;
         }
-
+        /// <summary>
+        /// Get salesmen for a given district
+        /// </summary>
+        /// <param name="districtName">Name of district who's salesmen you want</param>
+        /// <returns></returns>
         public async Task<IEnumerable<Salesman>> GetSalesmen(string districtName)
         {
             string sql = "SELECT s.id, s.first_name, s.middle_name, s.last_name " + 

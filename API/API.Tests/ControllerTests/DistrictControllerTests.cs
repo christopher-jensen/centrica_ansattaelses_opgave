@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.TagHelpers.Cache;
 using Moq;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
+using Xunit;
 
 namespace API.Tests.ControllerTests
 {
