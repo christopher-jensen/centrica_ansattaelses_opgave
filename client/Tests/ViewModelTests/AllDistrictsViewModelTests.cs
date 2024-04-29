@@ -8,6 +8,7 @@ using client.Model;
 using Moq;
 using ViewModel.Interfaces;
 using FluentAssertions;
+using Xunit;
 
 namespace Tests.ViewModelTests
 {
