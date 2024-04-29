@@ -77,6 +77,10 @@ jobs:
     # Change directory to the directory containing the solution
     - name: Change directory
       run: cd client
+      
+    - name: Print current directory
+      run: |
+        pwd
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
