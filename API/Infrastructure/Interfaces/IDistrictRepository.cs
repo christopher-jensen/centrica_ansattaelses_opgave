@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ìnfrastructure.Interfaces
+namespace Infrastructure.Interfaces
 {
     public interface IDistrictRepository
     {

@@ -1,4 +1,4 @@
-﻿using Ìnfrastructure.Interfaces;
+﻿using Infrastructure.Interfaces;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;

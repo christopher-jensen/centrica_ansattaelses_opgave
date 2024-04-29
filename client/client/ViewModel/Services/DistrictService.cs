@@ -16,11 +16,20 @@ namespace ViewModel.Services
 {
     public class DistrictService : IDistrictService
     {
-        private readonly HttpClient _client;
+        private readonly  HttpClient _client;
 
         public DistrictService()
         {
             _client = new HttpClient();
+            _client.BaseAddress = new Uri("https://localhost:7269/District/");
+            _client.DefaultRequestHeaders.Accept.Clear();
+            _client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+        }
+        // Used for testinng
+        public DistrictService(HttpClient client)
+        {
+            _client = client;
             _client.BaseAddress = new Uri("https://localhost:7269/District/");
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(

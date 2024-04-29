@@ -29,6 +29,12 @@ namespace client.ViewModel
             LoadDistricts();
         }
 
+        // Used for testing as i did not manage to implement dependency injection
+        public AllDistrictsViewModel(IDistrictService districtService)
+        {
+            _districtService = districtService;
+            LoadDistricts();
+        }
         public ObservableCollection<District>? Districts { get => _districts; set
             {
                 if (value != _districts) { 
@@ -38,7 +44,7 @@ namespace client.ViewModel
             }
         }
 
-        private async void LoadDistricts()
+        public async void LoadDistricts()
         {
             try
             {

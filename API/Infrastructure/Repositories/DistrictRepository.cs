@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Dapper;
 using System.Data;
 using Microsoft.AspNetCore.Mvc;
-using Ìnfrastructure.Interfaces;
+using Infrastructure.Interfaces;
 using Domain.Models;
 using System.Data.SqlClient;
 using System.Collections.Specialized;

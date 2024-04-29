@@ -1,4 +1,4 @@
-using Ìnfrastructure.Interfaces;
+using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
 using System.Data.SqlClient;
 
